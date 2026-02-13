@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Leaflet Draw Toolbar Styling */
+.leaflet-draw-toolbar {
+  margin-top: 10px !important;
+  z-index: 1000 !important;
+}
+
+.leaflet-draw-toolbar a {
+  background-color: #fff !important;
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  margin: 2px !important;
+  display: block !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.leaflet-draw-toolbar a:hover {
+  background-color: #f4f4f4 !important;
+}
+
+.leaflet-draw-actions {
+  background-color: #fff !important;
+}
+
+.leaflet-top.leaflet-right {
+  z-index: 1000 !important;
+}

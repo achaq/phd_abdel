@@ -1,0 +1,216 @@
+AI-Based Early Detection of Climate-Induced Water Stress in Olive Orchards Using Google Earth Engine: Morocco
+1. Introduction
+The era spanning 2015 to 2025 has been characterized by a profound climatological shift in the Mediterranean basin, a region identified by the Intergovernmental Panel on Climate Change (IPCC) as a primary "hotspot" for climate change intensification. In Morocco, this decade has witnessed a marked increase in the frequency, duration, and severity of drought events, fundamentally challenging the resilience of the nation's agricultural backbone. The agricultural sector, which accounts for a significant portion of Morocco's Gross Domestic Product (GDP) and rural employment, faces an existential crisis driven by water scarcity. The cultivation of the olive tree (Olea europaea L.), a species historically celebrated for its hardiness and adaptability to semi-arid environments, has moved to the center of this struggle. While naturally evolved to withstand periods of hydric deficit, Moroccan olive orchards are increasingly pushed beyond their physiological tipping points by compounded stress factors: rising ambient temperatures, erratic precipitation patterns, and the depletion of subsurface aquifers.1
+In response to these accelerating environmental pressures, the management of agricultural water resources has undergone a paradigm shift. The traditional, supply-side approach—focused on maximizing mobilization through dams and boreholes—has proven insufficient in the face of dwindling reserves. A transition toward demand-side management, predicated on precision agriculture and hyper-efficient irrigation, has become imperative. This transition is powered by the convergence of three technological revolutions: the democratization of high-resolution Earth Observation (EO) data through the Copernicus (Sentinel) and Landsat programs; the advent of cloud-based geospatial processing platforms, principally Google Earth Engine (GEE); and the maturity of Artificial Intelligence (AI) and Machine Learning (ML) algorithms capable of deciphering complex biological signals from space.3
+This report provides an exhaustive state-of-the-art analysis of AI-based early detection of climate-induced water stress in olive orchards, with a specific focus on the developments within Morocco between 2015 and 2025. It further contextualizes these advancements through a comparative lens, examining parallel research trajectories in analogous agro-ecological zones such as Spain, Italy, Greece, Tunisia, and California. The analysis extends to comparative crop physiology, contrasting the detection of stress in olives with other key commodities like citrus and cereals, to elucidate the specific challenges posed by the olive tree’s unique canopy architecture and physiological avoidance mechanisms.
+1.1 The Moroccan Agro-Climatic Context (2015–2025)
+The climatological record of the past decade in Morocco reveals a disturbing trend of aridification. The agricultural seasons between 2019 and 2022 were particularly devastating, with drought conditions peaking in intensity around September 2021. These events were not merely meteorological anomalies but manifestations of a systemic shift. In major irrigated perimeters such as the Tadla and Lower Tassaout, the cumulative rainfall deficit triggered a cascading failure in hydrologic continuity. Surface water allocations were drastically cut, forcing producers to rely heavily on groundwater extraction.2
+The impact of this climate forcing was heterogeneous. While annual crops like cereals faced immediate and total failure in rainfed zones, woody perennials like olives and citrus exhibited a more complex, delayed response. The olive tree's physiological strategy involves tight stomatal control to minimize water loss, a mechanism that allows survival but halts photosynthetic activity and fruit development. Detecting this "invisible" stress—where a tree appears green but is metabolically dormant—is the central challenge of modern remote sensing. The Green Generation Strategy 2020–2030, succeeding the Plan Maroc Vert (PMV), explicitly prioritizes the digitalization of agriculture and the modernization of irrigation networks to mitigate these risks. The integration of AI tools to monitor crop water status in near-real-time is a cornerstone of this national strategy, aiming to decouple agricultural productivity from rainfall variability.5
+2. Theoretical Framework: Remote Sensing Physics and Crop Physiology
+To understand the efficacy of AI models in detecting water stress, one must first deconstruct the physical interactions between electromagnetic radiation and the biophysical properties of the olive orchard. The detection of stress is not a direct measurement of "thirst" but an inference derived from changes in canopy reflectance, temperature, and structure.
+2.1 The Optical Domain: Reflectance and Pigmentation
+Optical remote sensing, utilizing the Visible (VIS), Near-Infrared (NIR), and Short-Wave Infrared (SWIR) portions of the spectrum, remains the most accessible modality. Satellites such as Sentinel-2 (European Space Agency) and Landsat 8/9 (NASA/USGS) provide the foundational data for these analyses.
+Pigment Degradation and Structural Wilting: In the visible spectrum, healthy vegetation absorbs red and blue light for photosynthesis. Water stress, if prolonged, leads to chlorophyll degradation (chlorosis), increasing red reflectance. However, this is a "lagging" indicator; by the time an olive tree turns yellow, significant yield loss has already occurred.
+Cellular Structure and NIR Plateau: The internal structure of the leaf mesophyll scatters Near-Infrared radiation. Turgid cells scatter light effectively, creating the characteristic "red edge" and high NIR reflectance. Dehydration causes cell collapse, reducing this scattering.
+Water Absorption in SWIR: The Short-Wave Infrared bands are the most critical for early detection in the optical domain. Water molecules in the leaf tissue absorb radiation at specific wavelengths (e.g., 1450 nm, 1940 nm). Consequently, SWIR reflectance increases as leaf water content decreases. Indices such as the Normalized Difference Water Index (NDWI) and the Land Surface Water Index (LSWI) leverage this phenomenon to detect stress before visible symptoms appear.6
+Challenges in Olive Orchards: The primary limitation of optical sensing in Moroccan olive orchards is the "mixed pixel" problem. Unlike the dense canopies of European or American intensive plantations, Moroccan orchards—especially traditional ones—are often characterized by wide spacing to reduce root competition. A standard 10m Sentinel-2 pixel or 30m Landsat pixel captures a composite signal of the olive crown, the bare soil, and the shadow. The soil signal, which varies with moisture and mineralogy, can overwhelm the subtle changes in leaf reflectance, leading to false positives or negatives in stress detection algorithms.8
+2.2 The Thermal Infrared Domain: Stomatal Dynamics
+Thermal remote sensing addresses the physiological response of the tree directly. The fundamental mechanism relies on the energy balance of the leaf surface.
+Evaporative Cooling: Transpiration is an endothermic process; as water evaporates from the stomata, it cools the leaf surface. Under water stress, the olive tree closes its stomata to conserve moisture (isohydric or near-isohydric behavior). This cessation of transpiration halts evaporative cooling, causing the canopy temperature () to rise above the ambient air temperature ().
+Crop Water Stress Index (CWSI): The CWSI is the gold standard metric in this domain, normalizing the  differential against the Vapor Pressure Deficit (VPD) of the atmosphere. It ranges from 0 (fully transpiring) to 1 (fully stressed).
+Resolution Constraints: While biologically direct, thermal sensing from space is constrained by resolution. The Thermal Infrared Sensor (TIRS) on Landsat 8/9 acquires data at 100m resolution. In a heterogeneous orchard, a 100m pixel averages the temperature of the trees (cool) and the sunlit soil (hot). This necessitates complex "downscaling" or "sharpening" algorithms within Google Earth Engine to derive meaningful tree-level stress metrics.8
+2.3 The Microwave Domain: Synthetic Aperture Radar (SAR)
+The era of 2015–2025 has seen a revolution in the use of Synthetic Aperture Radar (SAR), specifically the C-band data from Sentinel-1, for agricultural monitoring. Unlike optical sensors, radar penetrates clouds and is independent of solar illumination, a critical advantage for monitoring during Morocco's cloudy winter/spring growing seasons.
+Dielectric Constant and Backscatter: The radar signal (backscatter coefficient, ) is highly sensitive to the dielectric constant of the target. Since the dielectric constant of water (~80) is much higher than that of dry matter (~2-5), the backscatter intensity is a strong proxy for water content in the canopy and upper soil layer.
+Polarization and Structure: Sentinel-1 transmits vertically polarized waves (V) and receives both vertical (V) and horizontal (H) waves.
+VV Polarization: dominate by surface scattering (soil moisture and roughness).
+VH Polarization: dominated by volume scattering (interaction with the vegetation canopy structure).
+The Cross-Polarization Ratio (VH/VV): This ratio is frequently used to normalize soil effects and isolate the vegetation signal. In olive orchards, a drop in VH backscatter can indicate a loss of turgor pressure in the branches and leaves, or a change in canopy geometry due to wilting.11
+3. The Digital Infrastructure: Google Earth Engine (GEE)
+The transition from localized, single-date studies to national, multi-temporal monitoring systems has been enabled by Google Earth Engine (GEE). This cloud-based platform has democratized access to high-performance computing, allowing researchers in Morocco to process petabytes of satellite imagery without the need for expensive local infrastructure.
+3.1 The GEE Paradigm Shift
+Prior to GEE, the workflow for a water stress study involved manually downloading "scenes" from USGS or ESA servers, creating local mosaics, correcting for atmospheric effects, and then running analysis—a process that limited the scope to small areas and few dates. GEE hosts the entire public catalog of Landsat, Sentinel, MODIS, and climate datasets (CHIRPS, ERA5) on its servers.
+Server-Side Processing: Algorithms are sent to the data, rather than data being downloaded to the algorithm. This allows for the calculation of temporal metrics (e.g., "median NDVI of the last 5 years") in seconds.
+Machine Learning Integration: GEE natively supports classification and regression algorithms like Random Forest (RF), Support Vector Machines (SVM), and Classification and Regression Trees (CART). More recently, integration with TensorFlow has enabled the deployment of Deep Learning (DL) models directly on satellite tiles.1
+3.2 Key Datasets for Moroccan Agriculture
+The Moroccan research community has leveraged specific datasets within GEE to build their monitoring systems:
+Sentinel-2 MSI: The workhorse for vegetation indices (NDVI, NDWI) due to its 10m resolution and 5-day revisit time.
+Landsat 8/9: Crucial for its thermal bands (TIRS) to estimate Evapotranspiration (ET) and surface temperature.
+Sentinel-1 SAR: Used for all-weather monitoring and soil moisture retrieval.
+TerraClimate/ERA5: used to provide the meteorological context (temperature, precipitation, wind speed) necessary for calculating reference evapotranspiration () and atmospheric demand.13
+4. State of the Art: Water Stress Detection in Morocco (2015–2025)
+The research output from Morocco during this period reflects a rapid maturation of remote sensing capabilities, evolving from simple index-based monitoring to complex, multi-sensor AI frameworks. The analysis concentrates on the three primary irrigated basins: the Tadla, the Haouz, and the Saïss.
+4.1 Large-Scale Mapping and Crop Identification
+A prerequisite for detecting stress in olive orchards is the accurate delineation of the orchards themselves. This is non-trivial in Morocco, where olive trees exist in diverse configurations: from the super-high-density (SHD) hedgerows of industrial farms to the scattered, irregular groves of traditional smallholders.
+Lin et al. (2021) 15 produced a foundational study utilizing GEE to map tree crops across large scales in Morocco.
+Methodology: The study addressed the "small-crown" problem, where individual trees are often smaller than the pixel size of coarse resolution sensors. They employed high-resolution satellite imagery combined with Deep Learning algorithms (specifically adapted U-Net architectures) to segment tree canopies.
+Significance: This work demonstrated that Deep Learning could significantly outperform traditional pixel-based classifiers (like Maximum Likelihood) in distinguishing olive orchards from other woody vegetation (shrublands, forest) and bare soil. The resulting crop mask serves as the baseline layer for subsequent water stress monitoring systems, ensuring that stress signals are extracted exclusively from olive canopies.
+4.2 Optical and Thermal Drought Assessment: The Tadla Case Study
+The severe drought of 2019–2021 provided a grim but effective laboratory for testing remote sensing models. A pivotal study referenced in
+2
+and
+1
+focused on the Tadla and Lower Tassaout regions.
+Objective: To quantify the impact of drought on fruit tree systems (citrus and olives) and evaluate the resilience provided by different irrigation sources.
+Methodology: The researchers implemented a comparative analysis of three predictor scenarios within GEE:
+Model 1 (M1): Utilized only Sentinel-2 spectral bands and standard indices.
+Model 2 (M2): Incorporated historical vegetation indices to provide temporal context (anomaly detection).
+Model 3 (M3): Added phenological metrics (e.g., start of season, peak greenness) derived from time-series analysis.
+AI Implementation: Several Machine Learning Algorithms (MLAs) were tested. Random Forest (RF) and Gradient Tree Boost emerged as the superior performers, achieving overall accuracies of 95.94% and 94.09% respectively under the M3 scenario. This underscores a critical insight: AI needs context. The inclusion of phenological history allowed the model to distinguish between natural seasonal senescence and drought-induced stress.
+Findings: The study quantified the devastation, identifying 12,127 hectares of olive groves and 2,121 hectares of citrus orchards as significantly affected. Crucially, the analysis revealed a distinct class of "unimpacted" parcels—5,298 hectares of olive trees that remained vigorous despite the meteorological drought.
+Hydro-Geological Implication: The "unimpacted" areas were predominantly those with access to groundwater pumping. While this demonstrates short-term resilience, it highlights a hidden risk: satellite imagery might classify these orchards as "healthy" while they are actively depleting the aquifer. This necessitates the coupling of canopy monitoring with groundwater level data (e.g., GRACE satellites or piezometric networks) to assess true sustainability.1
+4.3 The Radar Frontier: Innovations in the Haouz Plain
+Perhaps the most scientifically novel contributions from Morocco have come from the collaborative research led by Jamal Ezzahar, Nadia Ouaadi, and Lionel Jarlan in the semi-arid Haouz plain (Marrakech region). Their work has focused on deciphering the complex signal of C-band Radar (Sentinel-1) over olive orchards, addressing the limitations of optical sensors in distinguishing soil from vegetation moisture.18
+The Diurnal Hysteresis Discovery: Ouaadi et al. 20 conducted a rigorous experiment using tower-mounted radar systems (simulating satellites) over an olive orchard. They discovered a clear diurnal cycle in the radar backscatter and interferometric coherence.
+Mechanism: During the day, as trees transpire, water moves from the xylem to the leaves, and the physical structure of the tree changes slightly (drooping). This alters the dielectric properties and the scattering geometry.
+Observation: Coherence was found to be highest at night and lowest in the late afternoon. The drop in coherence was strongly correlated with sap flow and evapotranspiration dynamics.
+Water Stress Detection Metric: Based on these findings, the team proposed using the diurnal difference in Sentinel-1 backscatter (morning descending orbit vs. evening ascending orbit) as a proxy for water stress. A high diurnal difference implies active transpiration (healthy), while a low difference implies stomatal closure and hydraulic failure (stressed).
+Comparison with Wheat: While they initially calibrated these methods on wheat 18, the extension to olive orchards proved that C-band radar could penetrate the canopy and sense the internal water status of the tree branches, providing a metric of "hydraulic stress" that complements the "thermal stress" measured by Landsat.20
+Data Sharing: In a significant contribution to the global community, this group published a comprehensive dataset 19 containing radar signals, soil moisture, and biomass measurements, enabling the validation of similar models worldwide.
+4.4 Advanced Deep Learning Architectures
+The period 2023–2025 has seen the initial adoption of Deep Learning (DL) architectures that go beyond standard Machine Learning.
+CNN-ViT Pipelines: Research such as
+21
+and
+21
+describes the use of Convolutional Neural Networks (CNNs) fused with Vision Transformers (ViT).
+Architecture: The CNN component is excellent at extracting local spatial features (textures, edges), effectively identifying the olive tree crowns within a mixed pixel. The ViT component, originally designed for natural language processing, uses "attention mechanisms" to analyze sequences. In remote sensing, it can model long-range dependencies in the spectral domain or the time domain.
+Advantage: This architecture outperformed standalone ViT or CNN models in determining crop water stress, highlighting its ability to learn complex, non-linear relationships between spectral signatures and water status without manual feature engineering.
+Coupled Physical-AI Models (AquaCrop-OS):
+13
+and
+13
+detail a framework integrating GEE, the AquaCrop-OS crop growth model, and a CNN-LSTM (Long Short-Term Memory) network.
+Function: This system does not just detect current stress; it predicts future Irrigation Water Requirements (IWR). The LSTM component is crucial for perennials like olives because it captures the "memory" of the system—a drought event three months ago affects the tree's current physiological response.
+Application: In arid basins similar to Morocco (e.g., Qarqan River Basin study), this coupled model simulated historical IWR (2000–2024) and projected future needs under CMIP6 climate scenarios. For fruit trees, it demonstrated that while acreage expansion drives water demand, improvements in water use efficiency (monitored by AI) can partially offset this rise.
+5. Comparative Analysis: International Benchmarks
+To fully appreciate the Moroccan state of the art, it is essential to compare it with methodologies in similar Mediterranean and semi-arid regions.
+5.1 Spain: Operational Irrigation Mapping and Thermal Scaling
+Spain, as the world's largest olive producer, serves as the primary benchmark for operational technology.
+Irrigation Mapping with DTW: A 2024 study in southern Spain
+22
+introduced a novel framework using Dynamic Time Warping (DTW) and XGBoost on Sentinel-2 NDVI time series.
+Method: Unlike Moroccan studies that often use static metrics, the Spanish approach uses DTW to compare the shape of the phenological curve. This allows them to distinguish between irrigated and rainfed olive groves with high precision, even when the growing seasons shift due to weather. XGBoost achieved nearly optimal accuracy (79-80%) with only three seasons of data, suggesting operational feasibility for rapid mapping.
+Thermal UAV Validation: Spanish research has heavily emphasized the validation of satellite thermal data using Unmanned Aerial Vehicles (UAVs).23 These studies confirmed that while satellite thermal data (Landsat/ECOSTRESS) is coarse, it correlates well with high-resolution UAV data when aggregated. This validates the use of satellite-derived CWSI for regional management, a practice now becoming standard in Andalusia.
+5.2 Italy: Explainable AI (XAI) and Disease Interaction
+Italian research has been driven by the dual threats of drought and the devastating bacterium Xylella fastidiosa.
+Fluorescence and Explainability: Studies such as
+25
+and
+26
+have focused on predicting Chlorophyll Fluorescence ()—a direct proxy for photosynthetic efficiency—using Sentinel-2 data.
+Innovation: They employed SHAP (SHapley Additive exPlanations) values to interpret their Random Forest models. This "Explainable AI" approach allows agronomists to see exactly which spectral bands are driving the stress prediction. They found that raw reflectance bands (particularly Red-Edge and NIR) were more predictive than standard vegetation indices, proving that ML models can extract subtle signals that human-designed indices miss.
+Relevance to Morocco: This approach is critical for distinguishing between water stress and disease stress, a growing concern in Moroccan groves.
+5.3 California: Atmospheric Fusion and Nut Crops
+California's Central Valley shares Morocco's climate but utilizes more capital-intensive technology.
+Atmospheric Data Fusion: Research on almonds and pistachios (physiologically similar to olives in drought response) has pioneered the fusion of EO data with high-resolution atmospheric data.27
+Finding: In predicting Stem Water Potential (SWP), Random Forest models found that atmospheric variables (Vapor Pressure Deficit, Air Temperature) were often more important features than the satellite vegetation indices. The "demand" side of the equation (how thirsty the air is) drives stress as much as the "supply" side (soil moisture). Moroccan models, which often rely solely on EO data, could significantly improve accuracy by integrating station data from the Direction de la Météorologie Nationale (DMN).
+5.4 Tunisia and Algeria: Arid Zone Radar Applications
+Tunisia: In the Kairouan plain, researchers have mirrored the Moroccan focus on Radar. Studies like
+28
+utilized Sentinel-1 and ALOS-2 (L-band) to monitor soil moisture and aquifer drawdown. The similarity in results between the Haouz (Morocco) and Kairouan (Tunisia) plains reinforces the validity of C-band radar as a robust tool for North African agriculture.
+Algeria: Recent work in the Béchar province
+7
+tested multispectral indices (LST, NDVI, AWEI) for precision irrigation of arid crops. They established specific thresholds (e.g., NDVI < 0.33 indicates stress) for local crop varieties. This index-based thresholding is simpler than the Moroccan AI models but offers a robust, low-compute alternative for extreme arid zones.
+6. Multi-Crop Perspectives: Olives vs. Citrus and Cereals
+Understanding water stress in olives requires contrasting it with other crops commonly found in the same Moroccan irrigation perimeters.
+6.1 Olives vs. Citrus
+In the Tadla study
+2
+, both citrus and olive orchards were analyzed.
+Physiology: Citrus trees are less drought-tolerant than olives. They have higher transpiration rates and lack the robust stomatal control of the olive. Consequently, citrus orchards showed stress symptoms earlier and more severely in the spectral data.
+Detection: Water stress in citrus manifests rapidly as a drop in canopy turgor and "yellowing" (chlorosis), easily picked up by NDVI. In contrast, olives can remain green while severely stressed (stomatal closure), making thermal (CWSI) or radar (dielectric) methods far more important for olives than for citrus.
+6.2 Olives vs. Cereals (Wheat)
+The work by Ouaadi et al. 18 initially focused on wheat before moving to olives.
+Structure: Wheat is a continuous canopy; olives are discontinuous (clumped).
+Radar Signal: In wheat, the radar signal is heavily influenced by the soil moisture under the canopy until the crop becomes very dense. In olive orchards, the "volume scattering" from the perennial branches is a constant background noise that must be subtracted to see the water signal. This makes AI models for olives significantly more complex, requiring architecture that can "learn" the static structure of the orchard and subtract it to reveal the dynamic water signal.
+7. Comparison of AI Architectures in Water Stress Detection
+The following table summarizes the performance and applicability of different AI architectures utilized in the reviewed studies (2015–2025).
+
+Architecture
+Primary Use Case
+Advantages
+Limitations
+Key Study
+Random Forest (RF)
+Classification of drought impact; SWP prediction.
+Robust to noise; handles high-dimensional data; provides feature importance; rarely overfits.
+Does not capture spatial/temporal context well (unless manually engineered features are added).
+1
+Support Vector Machine (SVM)
+Detection of specific pathologies (e.g., Verticillium); Irrigation mapping.
+Effective with smaller datasets; high accuracy in binary classification.
+Computationally expensive for large-scale GEE applications; sensitive to kernel choice.
+11
+CNN (Convolutional Neural Network)
+Tree crown segmentation; feature extraction from mixed pixels.
+Automatically learns spatial features (texture, shape); ideal for identifying trees in sparse orchards.
+Requires large labeled datasets (image chips); computationally intensive training.
+13
+LSTM (Long Short-Term Memory)
+Time-series analysis; Yield/IWR prediction.
+Captures temporal dependencies and "memory" (lag effects of drought).
+Complex to train; requires long, consistent time-series data without gaps.
+13
+Vision Transformer (ViT)
+End-to-end stress determination; spectral sequence analysis.
+Models long-range dependencies; dynamic attention to relevant bands/pixels.
+Very high data requirement; "Black Box" nature (hard to interpret).
+21
+Hybrid (CNN-ViT / CNN-LSTM)
+Holistic monitoring (Spatial + Temporal).
+State-of-the-art accuracy; combines strengths of spatial and temporal analysis.
+High complexity; requires significant computational resources (GPU/TPU).
+13
+
+8. Challenges, Gaps, and Future Outlook
+Despite the significant strides made between 2015 and 2025, several critical bottlenecks remain preventing the full operationalization of these technologies in Moroccan agriculture.
+8.1 The "Mixed Pixel" and Ground Truth Bottleneck
+The heterogeneous nature of Moroccan agriculture remains the primary physical challenge. Even with 10m Sentinel-2 data, a pixel often contains a mix of olive canopy, weeds, and bare soil.
+Future Direction: The integration of Super-Resolution (SR) techniques using Generative Adversarial Networks (GANs) within GEE could artificially upsample thermal data (from 100m to 10-20m) using the spatial patterns of optical imagery, creating synthetic high-resolution thermal maps.
+Ground Truth: Training these models requires vast amounts of ground data (Stem Water Potential). This is labor-intensive. The trend is moving towards using proxies—such as installing automated sap flow sensors or dendrometers in "reference orchards" to generate continuous training data, which is then extrapolated by the satellite models.19
+8.2 Explainability and Trust
+As models move from Random Forest to Deep Learning (Transformers), they become less interpretable. A farmer or water manager needs to know why a model is recommending irrigation.
+Future Direction: The adoption of Explainable AI (XAI) techniques like SHAP (as demonstrated in the Italian studies 25) is non-negotiable for operational adoption. Moroccan researchers must prioritize model transparency to gain the trust of institutional stakeholders (ORMVAs).
+8.3 The Groundwater Blind Spot
+The "resilience" of groundwater-fed orchards detected in the Tadla study 2 is a double-edged sword. It masks the depletion of the strategic water reserve.
+Future Direction: Future AI systems must be coupled hydrological-agronomic models. They should output not just "Crop Stress" (is the tree thirsty?) but also "Sustainability Index" (is the water source sustainable?). This requires fusing GEE crop layers with GRACE gravity anomalies or piezometric data to flag orchards that are green but ecologically unsustainable.
+8.4 Operationalization in the "Green Generation" Era
+The technology has matured; the challenge is now institutional integration. The Green Generation strategy calls for a digitalized agriculture.
+Future Direction: The development of a national "Digital Twin" for the olive sector—a continuously updated GEE dashboard that integrates the Lin et al. crop mask, the Ouaadi/Ezzahar radar stress metrics, and DMN weather data—would allow for dynamic water allocation. This system could prioritize water delivery to orchards that are at critical physiological thresholds, maximizing the "crop per drop" efficiency in a drying climate.
+9. Conclusion
+The decade from 2015 to 2025 has been a transformative era for agricultural remote sensing in Morocco. Driven by the existential threat of climate change and facilitated by the computational power of Google Earth Engine, the scientific community has moved from basic vegetation mapping to sophisticated, AI-driven detection of crop physiology.
+The Moroccan contribution to the state of the art is significant, particularly in the domain of C-band Radar (Sentinel-1) applications for woody crops. The discovery of diurnal hysteresis in radar backscatter provides a robust, cloud-independent metric for water stress that complements traditional optical and thermal methods. Furthermore, the application of Deep Learning (CNNs, LSTMs) has solved long-standing challenges in mapping fragmented, small-holder olive orchards, providing the necessary baseline for national-scale monitoring.
+Comparatively, while Spain leads in operational irrigation mapping and California in atmospheric data fusion, Morocco has established a unique niche in radar-based physiological monitoring and hydro-agronomic integration. The findings from the Tadla and Haouz plains demonstrate that AI can not only detect stress but also reveal the underlying hydrological dynamics of the agricultural system—exposing the critical reliance on groundwater during meteorological droughts.
+As Morocco moves forward with the Green Generation Strategy, the integration of these AI models into decision-support systems is the logical next step. The technology exists to detect the "silent scream" of the olive tree before it becomes visible to the eye; the imperative now is to translate this digital signal into concrete water-saving actions, ensuring the survival of this ancient crop in a warming world.
+Works cited
+Full article: Mapping drought severity impact on arboriculture systems over Tadla and lower Tassaout plains in Morocco using Sentinel-2 data and machine learning approaches - Taylor & Francis, accessed January 31, 2026, https://www.tandfonline.com/doi/full/10.1080/10106049.2025.2471104?af=R
+Full article: Mapping drought severity impact on arboriculture systems over Tadla and lower Tassaout plains in Morocco using Sentinel-2 data and machine learning approaches - Taylor & Francis, accessed January 31, 2026, https://www.tandfonline.com/doi/full/10.1080/10106049.2025.2471104?src=
+Olive tree drought stress: A systematic review | Journal of Water and Climate Change, accessed January 31, 2026, https://iwaponline.com/jwcc/article/15/12/5741/105961/Olive-tree-drought-stress-A-systematic-review
+Advancements in Remote Sensing Imagery Applications for Precision Management in Olive Growing: A Systematic Review - MDPI, accessed January 31, 2026, https://www.mdpi.com/2072-4292/16/8/1324
+Exploring the key drivers of crop yields in Morocco – a systematic review - Frontiers, accessed January 31, 2026, https://www.frontiersin.org/journals/agronomy/articles/10.3389/fagro.2025.1515938/full
+Recent Methods for Evaluating Crop Water Stress Using AI Techniques: A Review - PMC, accessed January 31, 2026, https://pmc.ncbi.nlm.nih.gov/articles/PMC11478660/
+Multispectral Indices for Crop Water Stress Assessment and Precision Irrigation in Arid Agriculture: A Case Study from Béchar, Algeria | International Journal of Computational and Experimental Science and Engineering, accessed January 31, 2026, https://www.ijcesen.com/index.php/ijcesen/article/view/3414
+Twenty Years of Remote Sensing Applications Targeting Landscape Analysis and Environmental Issues in Olive Growing: A Review - MDPI, accessed January 31, 2026, https://www.mdpi.com/2072-4292/14/21/5430
+Remote sensed images for prediction of stem water potential in olive ..., accessed January 31, 2026, https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13666/1366611/Remote-sensed-images-for-prediction-of-stem-water-potential-in/10.1117/12.3070202.full
+Recent Methods for Evaluating Crop Water Stress Using AI Techniques: A Review - MDPI, accessed January 31, 2026, https://www.mdpi.com/1424-8220/24/19/6313
+Irrigation Detection Using Sentinel-1 and Sentinel-2 Time Series on Fruit Tree Orchards, accessed January 31, 2026, https://www.mdpi.com/2072-4292/16/3/458
+Mapping Water Stress and Agricultural Adaptation Potential Using, accessed January 31, 2026, https://www.mohammedelkassoiri.app/research/water-stress-mapping-morocco.pdf
+Agricultural Irrigation Water Requirement Prediction in Arid Regions Based on the Integration of the AquaCrop-OS Model and Deep Learning: A Case Study of the Qarqan River Basin, China - MDPI, accessed January 31, 2026, https://www.mdpi.com/2073-4395/16/2/236
+A Machine Learning Approach to Predict Groundwater Levels in California Reveals Ecosystems at Risk - Frontiers, accessed January 31, 2026, https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2021.784499/full
+Spatio-Temporal Assessment of Olive Orchard Intensification in the Saïss Plain (Morocco) Using k-Means and High-Resolution Satellite Data - MDPI, accessed January 31, 2026, https://www.mdpi.com/2072-4292/15/1/50
+Correction: Lin et al. Toward Large-Scale Mapping of Tree Crops with High-Resolution Satellite Imagery and Deep Learning Algorithms: A Case Study of Olive Orchards in Morocco. Remote Sens. 2021, 13, 1740 - MDPI, accessed January 31, 2026, https://www.mdpi.com/2072-4292/15/1/141
+Toward Large-Scale Mapping of Tree Crops with High-Resolution ..., accessed January 31, 2026, https://www.mdpi.com/2072-4292/13/9/1740
+Water Stress Detection Over Irrigated Wheat Crops in Semi-Arid Areas using the Diurnal Differences of Sentinel-1 Backscatter | Request PDF - ResearchGate, accessed January 31, 2026, https://www.researchgate.net/publication/341850717_Water_Stress_Detection_Over_Irrigated_Wheat_Crops_in_Semi-Arid_Areas_using_the_Diurnal_Differences_of_Sentinel-1_Backscatter?_share=1
+C-band radar data and in situ measurements for the monitoring of wheat crops in a semi-arid area (center of Morocco) - ESSD Copernicus, accessed January 31, 2026, https://essd.copernicus.org/articles/13/3707/2021/essd-13-3707-2021.pdf
+Analysis of C-band radar temporal coherence over an irrigated olive orchard in a semi-arid region - Horizon IRD, accessed January 31, 2026, https://horizon.documentation.ird.fr/exl-doc/pleins_textes/2024-05/010089700.pdf
+(PDF) Remote Sensing Crop Water Stress Determination Using CNN-ViT Architecture, accessed January 31, 2026, https://www.researchgate.net/publication/380439440_Remote_Sensing_Crop_Water_Stress_Determination_Using_CNN-ViT_Architecture
+A Machine Learning Approach to Generate High-Resolution Maps of Irrigated Olive Groves, accessed January 31, 2026, https://www.mdpi.com/2073-445X/14/5/1001
+Assessment of UAV thermal imagery to monitor water stress in olive trees - ResearchGate, accessed January 31, 2026, https://www.researchgate.net/publication/372879925_Assessment_of_UAV_thermal_imagery_to_monitor_water_stress_in_olive_trees
+Crop water stress maps for an entire growing season from visible and thermal UAV imagery, accessed January 31, 2026, https://bg.copernicus.org/articles/13/6545/2016/bg-13-6545-2016-relations.html
+Predicting Olive Tree Chlorophyll Fluorescence Using Explainable AI with Sentinel-2 Imagery in Mediterranean Environment, accessed January 31, 2026, https://digital.csic.es/bitstream/10261/385704/1/applsci-15-02746.pdf
+(PDF) Olive Tree Water Stress Detection Using Daily Multispectral Imagery - ResearchGate, accessed January 31, 2026, https://www.researchgate.net/publication/355255846_Olive_Tree_Water_Stress_Detection_Using_Daily_Multispectral_Imagery
+Predicting Tree Water Status in Pistachio and Almond Orchards Using Supervised Machine Learning - ResearchGate, accessed January 31, 2026, https://www.researchgate.net/publication/372373160_Predicting_Tree_Water_Status_in_Pistachio_and_Almond_Orchards_Using_Supervised_Machine_Learning
+Investigation of Multi-Frequency SAR Data to Retrieve the Soil Moisture within a Drip Irrigation Context Using Modified Water Cloud Model - PubMed Central, accessed January 31, 2026, https://pmc.ncbi.nlm.nih.gov/articles/PMC8780553/
+Implementing Sentinel-2 Data and Machine Learning to Detect Plant ..., accessed January 31, 2026, https://www.mdpi.com/2072-4292/14/23/5947
+Remote Sensing and Machine Learning Approaches for Hydrological Drought Detection: A PRISMA Review - MDPI, accessed January 31, 2026, https://www.mdpi.com/2073-4441/18/3/369

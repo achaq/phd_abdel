@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3-pro-preview",
+  "modelConfigs": {
+    "gemini-3-pro-preview": {
+      "thinking_level": "high"
+    }
+  }
+}

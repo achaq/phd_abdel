@@ -1,0 +1,245 @@
+# Comprehensive Execution Plan
+
+## AI-Based Climate Impact Studies on Olive Systems & Biodiversity in Ghafsai, Morocco
+
+---
+
+## OVERVIEW
+
+This document provides a **week-by-week, end-to-end execution plan** for **two publishable scientific articles** using **AI and Google Earth Engine (GEE)**, focused on the Ghafsai region near Fez (Morocco).
+
+* **Article 1 (Primary – Agriculture & Water):**
+  *AI-based early detection of climate-induced water stress in olive orchards*
+🔹 Abstract – Article 1
+AI-Based Early Detection of Climate-Induced Water Stress in Olive Orchards Using Google Earth Engine: A Case Study of Ghafsai, Morocco
+
+Climate change–induced water scarcity poses a critical threat to olive cultivation in semi-arid Mediterranean regions, particularly in Morocco where olives play a key economic and ecological role. While remote sensing has been widely used for retrospective drought monitoring, early detection and prediction of water stress using artificial intelligence remain largely unexplored in Moroccan agroecosystems. This study proposes an AI-based early-warning framework for detecting climate-induced water stress in olive orchards of the Ghafsai region near Fez, using multi-source satellite and climate data processed in Google Earth Engine (GEE).
+
+Monthly time-series data from Sentinel-2 (NDVI, NDWI), MODIS (land surface temperature and evapotranspiration), CHIRPS precipitation, SMAP soil moisture, and topographic variables were integrated for the period 2017–2024. A Random Forest regression model was trained to predict a water-stress proxy derived from vegetation anomalies and evapotranspiration deficits. Feature engineering incorporated seasonal anomalies and lagged climate variables to capture delayed vegetation responses to hydro-climatic stress.
+
+Results show that the proposed model achieves strong predictive performance (R² > 0.70), with rainfall deficits, temperature anomalies, and soil moisture identified as the dominant drivers of olive water stress. Spatially explicit risk maps reveal recurrent stress hotspots during late spring and summer, highlighting periods of heightened vulnerability. The proposed framework demonstrates the feasibility of operational, scalable early-warning systems for climate adaptation in perennial crops and provides actionable insights for irrigation planning and drought risk management. This approach can be readily extended to other olive-producing regions in Morocco and comparable Mediterranean environments.
+* **Article 2 (Secondary – Biodiversity & Adaptation):**
+  *Climate-driven habitat suitability and decline risk of wild olive ecosystems*
+
+🔹 Abstract – Article 2
+Assessing Climate-Driven Habitat Suitability and Future Decline Risk of Wild Olive Ecosystems in Northern Morocco Using AI-Based Species Distribution Modeling
+
+Native Mediterranean tree species are increasingly threatened by climate change, yet their future habitat dynamics remain poorly quantified in North Africa. In Morocco, research on climate-driven biodiversity impacts has largely focused on a limited number of emblematic species, leaving wild olive (Olea europaea var. sylvestris) ecosystems underexplored despite their ecological and socio-economic importance. This study assesses the current and future habitat suitability of wild olive ecosystems in the Ghafsai region near Fez using AI-based species distribution modeling.
+
+Occurrence records were combined with bioclimatic variables, topographic factors, and land-cover data to train a Random Forest / MaxEnt model that estimates habitat suitability under present climatic conditions and future climate scenarios (RCP 4.5 and RCP 8.5). Model performance was evaluated using AUC and threshold-dependent metrics, and spatial projections were generated to identify areas of habitat contraction, expansion, and climatic refugia.
+
+The results indicate a significant reduction in suitable habitats under future climate scenarios, particularly at lower elevations and in areas experiencing increased temperature and reduced precipitation. However, several high-elevation and north-facing zones emerge as potential climate refugia, offering priority targets for conservation and restoration strategies. This study provides one of the first AI-driven assessments of wild olive climate vulnerability in northern Morocco and highlights the value of integrating machine learning with climate projections to support biodiversity conservation under climate change. The proposed framework is transferable to other native tree species and regions across the Mediterranean basin.
+
+
+
+
+The plan is designed to be **realistic, data-driven, and achievable within ~16 weeks**, aligned with PhD-level expectations and journal standards.
+
+---
+
+# ARTICLE 1 — AI-Based Early Detection of Water Stress in Olive Orchards
+
+## A1. Scientific Objective
+
+Develop an **AI-driven early-warning system** to detect and predict water stress in olive orchards of Ghafsai using multi-source satellite and climate data.
+
+---
+
+## A2. Required Knowledge Stack
+
+### Climate & Agriculture
+
+* Mediterranean semi-arid climate dynamics
+* Olive phenology and water requirements
+* Drought and evapotranspiration concepts
+
+### Remote Sensing
+
+* Sentinel-2 spectral bands
+* Vegetation indices (NDVI, NDWI, EVI)
+* MODIS land surface temperature & ET
+
+### Machine Learning
+
+* Random Forest regression
+* Feature importance analysis
+* Model validation strategies
+
+---
+
+## A3. Data Sources (100% Open & GEE-Available)
+
+| Category      | Dataset    | Resolution |
+| ------------- | ---------- | ---------- |
+| Vegetation    | Sentinel-2 | 10 m       |
+| Temperature   | MODIS LST  | 1 km       |
+| Rainfall      | CHIRPS     | 5 km       |
+| Soil Moisture | SMAP       | 9 km       |
+| ET            | MODIS ET   | 500 m      |
+| Topography    | SRTM       | 30 m       |
+
+---
+
+## A4. Programming Stack
+
+* **Google Earth Engine (JavaScript)** – data processing & export
+* **Python** – ML modeling (scikit-learn, xgboost)
+* **GIS (QGIS)** – visualization & mapping
+
+---
+
+## A5. Weekly Execution Plan (Article 1)
+
+### Week 1 — Scientific Framing & Region Definition
+
+* Finalize research questions
+* Delineate Ghafsai study area in GEE
+* Literature deep-dive (Morocco + Mediterranean olives)
+
+### Week 2 — Olive Orchard Mapping
+
+* Generate olive mask using NDVI seasonality
+* Validate mask visually
+* Export olive polygons
+
+### Week 3 — Climate & RS Data Extraction
+
+* Sentinel-2 monthly composites
+* CHIRPS rainfall aggregation
+* MODIS LST & ET extraction
+
+### Week 4 — Feature Engineering
+
+* NDVI & NDWI anomalies
+* Rainfall accumulation (3-month)
+* Temperature anomaly computation
+
+### Week 5 — Dataset Assembly
+
+* Pixel-based sampling
+* Build training table
+* Data normalization
+
+### Week 6 — Model Development
+
+* Random Forest regression
+* Hyperparameter tuning
+* Baseline performance
+
+### Week 7 — Validation & Sensitivity Analysis
+
+* Temporal cross-validation
+* Feature importance analysis
+
+### Week 8 — Mapping & Visualization
+
+* Monthly water-stress risk maps
+* Seasonal summaries
+
+### Week 9 — Results Interpretation
+
+* Climate driver analysis
+* Comparison with global studies
+
+### Week 10 — Writing & Submission Prep
+
+* Draft manuscript
+* Figures & tables
+* Journal formatting
+
+---
+
+# ARTICLE 2 — Climate-Driven Habitat Suitability of Wild Olive
+
+## B1. Scientific Objective
+
+Assess **current and future habitat suitability** of wild olive under climate change and identify climate refugia in Ghafsai.
+
+---
+
+## B2. Required Knowledge Stack
+
+### Ecology & Biodiversity
+
+* Species distribution modeling
+* Climate adaptation & refugia
+
+### AI Modeling
+
+* MaxEnt / Random Forest classification
+* Model evaluation (AUC, TSS)
+
+---
+
+## B3. Data Sources
+
+| Category   | Dataset           |
+| ---------- | ----------------- |
+| Occurrence | GBIF, literature  |
+| Climate    | WorldClim, CHELSA |
+| Terrain    | SRTM              |
+| Land Cover | ESA WorldCover    |
+
+---
+
+## B4. Programming Stack
+
+* GEE (climate & terrain extraction)
+* Python (maxentpy / sklearn)
+* QGIS (habitat maps)
+
+---
+
+## B5. Weekly Execution Plan (Article 2)
+
+### Week 11 — Species & Data Preparation
+
+* Collect wild olive occurrence points
+* Clean spatial duplicates
+
+### Week 12 — Environmental Variable Preparation
+
+* Extract bioclimatic variables
+* Correlation filtering
+
+### Week 13 — Model Training
+
+* MaxEnt model calibration
+* Model evaluation
+
+### Week 14 — Climate Change Projections
+
+* RCP 4.5 & 8.5 scenarios
+* Habitat suitability maps (2050)
+
+### Week 15 — Refugia & Risk Mapping
+
+* Habitat loss/gain analysis
+* Conservation priority zones
+
+### Week 16 — Writing & Submission
+
+* Draft manuscript
+* Policy implications
+* Journal formatting
+
+---
+
+## FINAL DELIVERABLES
+
+* 2 peer-reviewed articles
+* Reusable GEE scripts
+* Scalable national framework
+* Strong PhD portfolio contribution
+
+---
+
+## NEXT STEPS
+
+* Abstract drafting
+* GEE script templates
+* Journal targeting
+
+---
+
+**This plan is designed for efficiency, originality, and publication success.**

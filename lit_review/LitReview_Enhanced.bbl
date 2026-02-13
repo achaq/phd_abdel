@@ -1,0 +1,307 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{30}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[tad(2023)]%
+        {tadla_drought}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Monitoring drought-induced degradation of olive and citrus tree crops in the Tadla plain (Morocco) with multi-sensor remote sensing}.
+\newblock \bibinfo{journal}{\emph{ResearchGate}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[mdp(2023)]%
+        {mdpi_saiss}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Spatio-Temporal Assessment of Olive Orchard Intensification in the Sa{\"i}ss Plain (Morocco) Using k-Means and High-Resolution Satellite Data}.
+\newblock \bibinfo{journal}{\emph{Remote Sensing}} \bibinfo{volume}{15}, \bibinfo{number}{1} (\bibinfo{year}{2023}), \bibinfo{pages}{50}.
+\newblock
+
+
+\bibitem[Ait~Ouchene et~al\mbox{.}(2024)]%
+        {AitOuchene2024}
+\bibfield{author}{\bibinfo{person}{H. Ait~Ouchene} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{LSTM for streamflow simulation in Moroccan watersheds}.
+\newblock \bibinfo{journal}{\emph{Hydrological Sciences Journal}} (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[Asare et~al\mbox{.}(2020)]%
+        {agricultural_information_ghana_2020}
+\bibfield{author}{\bibinfo{person}{R. Asare} {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Agricultural Information's Impact on the Adaptive Capacity of Ghana's Smallholder Cocoa Farmers}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Sustainable Food Systems}}  \bibinfo{volume}{4} (\bibinfo{year}{2020}), \bibinfo{pages}{28}.
+\newblock
+
+
+\bibitem[Ayadi et~al\mbox{.}(2025)]%
+        {Ayadi2025}
+\bibfield{author}{\bibinfo{person}{Rym Ayadi}, \bibinfo{person}{Yeganeh Forouheshfar}, {and} \bibinfo{person}{Omid Moghadas}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Enhancing system resilience to climate change through artificial intelligence: a systematic literature review}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Climate}}  \bibinfo{volume}{7} (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.3389/fclim.2025.1585331}
+\showDOI{\tempurl}
+
+
+\bibitem[Bouras et~al\mbox{.}(2021)]%
+        {Bouras2021}
+\bibfield{author}{\bibinfo{person}{E.~H. Bouras} {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Early warning system for cereal yield forecasting}.
+\newblock \bibinfo{journal}{\emph{Moroccan Journal of Agricultural Sciences}} (\bibinfo{year}{2021}).
+\newblock
+
+
+\bibitem[Chouaib et~al\mbox{.}(2025)]%
+        {Chouaib2025}
+\bibfield{author}{\bibinfo{person}{M. Chouaib} {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Physics-Informed Neural Networks for evapotranspiration estimation in Tensift watershed}.
+\newblock \bibinfo{journal}{\emph{Water Resources Research}} (\bibinfo{year}{2025}).
+\newblock
+
+
+\bibitem[El~Hajj et~al\mbox{.}(2017)]%
+        {soil_moisture_s1_s2_2017}
+\bibfield{author}{\bibinfo{person}{M. El~Hajj} {et~al\mbox{.}}} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Synergic Use of Sentinel-1 and Sentinel-2 Images for Operational Soil Moisture Mapping at High Spatial Resolution over Agricultural Areas}.
+\newblock \bibinfo{journal}{\emph{Remote Sensing}} \bibinfo{volume}{9}, \bibinfo{number}{12} (\bibinfo{year}{2017}), \bibinfo{pages}{1292}.
+\newblock
+
+
+\bibitem[El~Hajj et~al\mbox{.}(2022)]%
+        {irrigation_mapping_s1_s2_2022}
+\bibfield{author}{\bibinfo{person}{M. El~Hajj} {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Irrigation Mapping on Two Contrasted Climatic Contexts Using Sentinel-1 and Sentinel-2 Data}.
+\newblock \bibinfo{journal}{\emph{Water}} \bibinfo{volume}{14}, \bibinfo{number}{5} (\bibinfo{year}{2022}), \bibinfo{pages}{804}.
+\newblock
+
+
+\bibitem[{El Mezouary} et~al\mbox{.}(2024)]%
+        {ElMezouary2024}
+\bibfield{author}{\bibinfo{person}{Lhoussaine {El Mezouary}}, \bibinfo{person}{Abdessamad Hadri}, \bibinfo{person}{Mohamed~Hakim Kharrou}, \bibinfo{person}{Younes Fakır}, \bibinfo{person}{Abderrahman Elfarchouni}, \bibinfo{person}{Lhoussaine Bouchaou}, {and} \bibinfo{person}{Abdelghani Chehbouni}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Contribution to advancing aquifer geometric mapping using machine learning and deep learning techniques: a case study of the AL Haouz-Mejjate aquifer, Marrakech, Morocco}.
+\newblock \bibinfo{journal}{\emph{Applied Water Science}} \bibinfo{volume}{14}, \bibinfo{number}{5} (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s13201-024-02162-x}
+\showDOI{\tempurl}
+
+
+\bibitem[Fern{\'a}ndez et~al\mbox{.}(2021)]%
+        {olive_water_stress_continuous_sensors_2021}
+\bibfield{author}{\bibinfo{person}{J.~E. Fern{\'a}ndez} {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Detecting Mild Water Stress in Olive with Multiple Plant-Based Continuous Sensors}.
+\newblock \bibinfo{journal}{\emph{Plants}} \bibinfo{volume}{10}, \bibinfo{number}{1} (\bibinfo{year}{2021}), \bibinfo{pages}{131}.
+\newblock
+
+
+\bibitem[Garc{\'i}a-Tejero et~al\mbox{.}(2024)]%
+        {planet_olive_swp_2024}
+\bibfield{author}{\bibinfo{person}{I.~F. Garc{\'i}a-Tejero} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Prediction of Stem Water Potential in Olive Orchards Using High-Resolution Planet Satellite Images and Machine Learning Techniques}.
+\newblock \bibinfo{journal}{\emph{Agronomy}} \bibinfo{volume}{14}, \bibinfo{number}{1} (\bibinfo{year}{2024}), \bibinfo{pages}{1}.
+\newblock
+
+
+\bibitem[Gonz{\'a}lez-Dugo et~al\mbox{.}(2013)]%
+        {uav_thermal_orchard_2013}
+\bibfield{author}{\bibinfo{person}{V. Gonz{\'a}lez-Dugo} {et~al\mbox{.}}} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Using high resolution UAV thermal imagery to assess the variability in the water status of five fruit tree species within a commercial orchard}.
+\newblock \bibinfo{journal}{\emph{Precision Agriculture}}  \bibinfo{volume}{14} (\bibinfo{year}{2013}), \bibinfo{pages}{660--678}.
+\newblock
+
+
+\bibitem[Gonz{\'a}lez-Dugo et~al\mbox{.}(2024)]%
+        {almond_swp_mapping_2024}
+\bibfield{author}{\bibinfo{person}{V. Gonz{\'a}lez-Dugo} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Mapping almond stem water potential using machine learning and multispectral imagery}.
+\newblock \bibinfo{journal}{\emph{Irrigation Science}} (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s00271-024-00932-8}
+\showDOI{\tempurl}
+
+
+\bibitem[Gumus et~al\mbox{.}(2024)]%
+        {Gumis2024}
+\bibfield{author}{\bibinfo{person}{Veysel Gumus}, \bibinfo{person}{Nabil {El Mo{\c{c}}ayd}}, \bibinfo{person}{Mehmet Seker}, {and} \bibinfo{person}{Mohammed Seaid}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Future projection of droughts in Morocco and potential impact on agriculture}.
+\newblock \bibinfo{journal}{\emph{Journal of Environmental Management}}  \bibinfo{volume}{367} (\bibinfo{year}{2024}), \bibinfo{pages}{122019}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/J.JENVMAN.2024.122019}
+\showDOI{\tempurl}
+
+
+\bibitem[{IPCC}(2021)]%
+        {IPCC2021WGI}
+\bibfield{author}{\bibinfo{person}{{IPCC}}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Climate Change 2021: The Physical Science Basis}}.
+\newblock \bibinfo{publisher}{Cambridge University Press}.
+\newblock
+
+
+\bibitem[Jain et~al\mbox{.}(2024)]%
+        {ai_climate_risk_smallholders_2024}
+\bibfield{author}{\bibinfo{person}{M. Jain} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{AI-driven climate risk forecasting to enhance smallholder farmer resilience}.
+\newblock \bibinfo{journal}{\emph{PLOS Climate}} (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1371/journal.pclm.0000675}
+\showDOI{\tempurl}
+
+
+\bibitem[Kumar et~al\mbox{.}(2024)]%
+        {federated_xai_agriculture_2024}
+\bibfield{author}{\bibinfo{person}{A. Kumar} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{A Federated Explainable AI Framework for Smart Agriculture: Enhancing Transparency, Efficiency and Sustainability}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Smart Agriculture}} (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[{Le Page} and Zribi(2019)]%
+        {LePage2019}
+\bibfield{author}{\bibinfo{person}{Michel {Le Page}} {and} \bibinfo{person}{Mehrez Zribi}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Analysis and Predictability of Drought In Northwest Africa Using Optical and Microwave Satellite Remote Sensing Products}.
+\newblock \bibinfo{journal}{\emph{Scientific Reports}} \bibinfo{volume}{9}, \bibinfo{number}{1} (\bibinfo{year}{2019}), \bibinfo{pages}{1--13}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41598-018-37911-x}
+\showDOI{\tempurl}
+
+
+\bibitem[L{\'o}pez-L{\'o}pez et~al\mbox{.}(2024)]%
+        {walnut_water_stress_uav_2024}
+\bibfield{author}{\bibinfo{person}{M. L{\'o}pez-L{\'o}pez} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Mapping walnut water stress with high resolution multispectral UAV imagery and machine learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2401.01375}} (\bibinfo{year}{2024}).
+\newblock
+
+
+\bibitem[Patel et~al\mbox{.}(2025)]%
+        {era5_chickpea_yield_2025}
+\bibfield{author}{\bibinfo{person}{N. Patel} {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Harnessing Sentinel-2 imagery and AgERA5 data using Google Earth Engine for developing chickpea mechanistic growth modeling and pre-harvest empirical yield forecast}.
+\newblock \bibinfo{journal}{\emph{Precision Agriculture}} \bibinfo{volume}{26}, \bibinfo{number}{2} (\bibinfo{year}{2025}), \bibinfo{pages}{345--367}.
+\newblock
+
+
+\bibitem[Ragragui et~al\mbox{.}(2024)]%
+        {Ragragui2024}
+\bibfield{author}{\bibinfo{person}{Hind Ragragui}, \bibinfo{person}{My~Hachem Aouragh}, \bibinfo{person}{Abdellah El-Hmaidi}, \bibinfo{person}{Lamya Ouali}, \bibinfo{person}{Jihane Saouita}, \bibinfo{person}{Zineb Iallamen}, \bibinfo{person}{Habiba Ousmana}, \bibinfo{person}{Hajar Jaddi}, {and} \bibinfo{person}{Anas {El Ouali}}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Mapping and modeling groundwater potential using machine learning, deep learning and ensemble learning models in the Saiss basin (Fez-Meknes region, Morocco)}.
+\newblock \bibinfo{journal}{\emph{Groundwater for Sustainable Development}}  \bibinfo{volume}{26} (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.gsd.2024.101281}
+\showDOI{\tempurl}
+
+
+\bibitem[Rodriguez-Dominguez et~al\mbox{.}(2020)]%
+        {olive_cultivar_sensing_2020}
+\bibfield{author}{\bibinfo{person}{C.~M. Rodriguez-Dominguez} {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{A Cultivar-Sensitive Approach for the Continuous Monitoring of Olive (Olea europaea L.) Tree Water Status by Fruit and Leaf Sensing}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Plant Science}}  \bibinfo{volume}{11} (\bibinfo{year}{2020}), \bibinfo{pages}{340}.
+\newblock
+
+
+\bibitem[Rojas et~al\mbox{.}(2017)]%
+        {asap_agricultural_warning_2017}
+\bibfield{author}{\bibinfo{person}{O. Rojas} {et~al\mbox{.}}} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{ASAP: A new global early warning system to detect anomaly hot spots of agricultural production for food security analysis}.
+\newblock \bibinfo{journal}{\emph{Agricultural Systems}}  \bibinfo{volume}{168} (\bibinfo{year}{2017}), \bibinfo{pages}{123--135}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.agsy.2018.07.002}
+\showDOI{\tempurl}
+
+
+\bibitem[Silva et~al\mbox{.}(2024)]%
+        {shap_almond_stomatal_2024}
+\bibfield{author}{\bibinfo{person}{P. Silva} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Combining UAV-Based Multispectral and Thermal Infrared Data with Regression Modeling and SHAP Analysis for Predicting Stomatal Conductance in Almond Orchards}.
+\newblock \bibinfo{journal}{\emph{Remote Sensing}} \bibinfo{volume}{16}, \bibinfo{number}{8} (\bibinfo{year}{2024}), \bibinfo{pages}{1423}.
+\newblock
+
+
+\bibitem[Taheripour et~al\mbox{.}(2020)]%
+        {Taheripour2020Morocco}
+\bibfield{author}{\bibinfo{person}{F. Taheripour} {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Water Resources Management in Morocco}.
+\newblock \bibinfo{journal}{\emph{Water Policy}} (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Tramblay et~al\mbox{.}(2013)]%
+        {Tramblay2013}
+\bibfield{author}{\bibinfo{person}{Y. Tramblay}, \bibinfo{person}{D. Ruelland}, \bibinfo{person}{S. Somot}, \bibinfo{person}{R. Bouaicha}, {and} \bibinfo{person}{E. Servat}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{High-resolution Med-CORDEX regional climate model simulations for hydrological impact studies: A first evaluation of the ALADIN-Climate model in Morocco}.
+\newblock \bibinfo{journal}{\emph{Hydrology and Earth System Sciences}} \bibinfo{volume}{17}, \bibinfo{number}{10} (\bibinfo{year}{2013}), \bibinfo{pages}{3721--3739}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.5194/hess-17-3721-2013}
+\showDOI{\tempurl}
+
+
+\bibitem[{UNICEF}(2023)]%
+        {UNICEFWASH2023}
+\bibfield{author}{\bibinfo{person}{{UNICEF}}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Water Scarcity in MENA Region}.
+\newblock
+\newblock
+
+
+\bibitem[Verdin et~al\mbox{.}(2020)]%
+        {ewx_early_warning_2020}
+\bibfield{author}{\bibinfo{person}{J. Verdin} {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Enhancing the Application of Earth Observations for Improved Environmental Decision-Making Using the Early Warning eXplorer (EWX)}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Climate}}  \bibinfo{volume}{2} (\bibinfo{year}{2020}), \bibinfo{pages}{583509}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2023)]%
+        {cnn_lstm_cotton_2023}
+\bibfield{author}{\bibinfo{person}{Y. Zhang} {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A CNN-LSTM model for cotton water stress classification}.
+\newblock \bibinfo{journal}{\emph{Transactions of the ASABE}} \bibinfo{volume}{66}, \bibinfo{number}{3} (\bibinfo{year}{2023}), \bibinfo{pages}{549--563}.
+\newblock
+
+
+\end{thebibliography}

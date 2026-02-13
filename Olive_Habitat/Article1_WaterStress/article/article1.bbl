@@ -1,0 +1,106 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[rdi()]{rdi_olive}
+Enhancing olive yield and oil quality under semi-arid conditions through
+  regulated deficit irrigation (rdi).
+\newblock \emph{International Journal of Agriculture and Biology}.
+\newblock URL \url{https://www.ijagbio.com/pdf-files/25-557.pdf}.
+
+\bibitem[lst(2020)]{lstm_drought}
+Development of a drought prediction system based on long short-term memory
+  networks (lstm).
+\newblock \emph{ResearchGate}, 2020.
+\newblock URL
+  \url{https://www.researchgate.net/publication/347218575_Development_of_a_Drought_Prediction_System_Based_on_Long_Short-Term_Memory_Networks_LSTM}.
+
+\bibitem[mdp(2021)]{mdpi_etdi}
+Sensitivity of the evapotranspiration deficit index to its parameters and
+  different temporal scales.
+\newblock \emph{MDPI Hydrology}, 8\penalty0 (1):\penalty0 26, 2021.
+\newblock URL \url{https://www.mdpi.com/2306-5338/8/1/26}.
+
+\bibitem[fro(2022)]{frontiers_shap_rf}
+Integration of shapley additive explanations with random forest model for
+  quantitative precipitation estimation of mesoscale convective systems.
+\newblock \emph{Frontiers in Environmental Science}, 2022.
+\newblock URL
+  \url{https://www.frontiersin.org/journals/environmental-science/articles/10.3389/fenvs.2022.1057081/full}.
+
+\bibitem[mdp(2022)]{mdpi_phenotyping}
+Phenotyping olive cultivars for drought tolerance using leaf
+  macro-characteristics.
+\newblock \emph{MDPI Horticulturae}, 8\penalty0 (10):\penalty0 939, 2022.
+\newblock URL \url{https://www.mdpi.com/2311-7524/8/10/939}.
+
+\bibitem[mdp(2023)]{mdpi_saiss}
+Spatio-temporal assessment of olive orchard intensification in the saïss plain
+  (morocco) using k-means and high-resolution satellite data.
+\newblock \emph{MDPI Remote Sensing}, 15\penalty0 (1):\penalty0 50, 2023.
+\newblock URL \url{https://www.mdpi.com/2072-4292/15/1/50}.
+
+\bibitem[hes(2024)]{hess_rf_downscaling}
+Machine learning and global vegetation: random forests for downscaling and gap
+  filling.
+\newblock \emph{Hydrology and Earth System Sciences}, 28:\penalty0 2357, 2024.
+\newblock URL \url{https://hess.copernicus.org/articles/28/2357/2024/}.
+
+\bibitem[inr(2025)]{inra2025}
+Advancing inra research on olive trees in morocco: Supporting sustainable
+  development of the national olive sector.
+\newblock \emph{African and Mediterranean Agricultural Journal - Al Awamia},
+  2025.
+\newblock URL
+  \url{https://revues.imist.ma/index.php/Afrimed/article/view/43465}.
+
+\bibitem[Frontiers(2025)]{frontiers2025}
+Frontiers.
+\newblock Towards sustainable water management in morocco: assessing resources,
+  challenges, and adaptation strategies.
+\newblock \emph{Frontiers in Sustainable Food Systems}, 2025.
+\newblock URL
+  \url{https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2025.1666555/full}.
+
+\bibitem[Goo({\natexlab{a}})]{gee_modis_et}
+\emph{MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m}.
+\newblock Google Earth Engine Data Catalog, {\natexlab{a}}.
+\newblock URL
+  \url{https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD16A2}.
+
+\bibitem[Goo({\natexlab{b}})]{gee_sentinel2}
+\emph{Sentinel-2 MSI: MultiSpectral Instrument, Level-2A}.
+\newblock Google Earth Engine Data Catalog, {\natexlab{b}}.
+\newblock URL
+  \url{https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED}.
+
+\bibitem[Goo({\natexlab{c}})]{gee_smap}
+\emph{SPL4SMGP.008 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil
+  Moisture}.
+\newblock Google Earth Engine Data Catalog, {\natexlab{c}}.
+\newblock URL
+  \url{https://developers.google.com/earth-engine/datasets/catalog/NASA_SMAP_SPL4SMGP_008}.
+
+\bibitem[NOA()]{noaa_vhi}
+\emph{Global Vegetation Health Products}.
+\newblock NOAA NESDIS.
+\newblock URL
+  \url{https://www.star.nesdis.noaa.gov/smcd/emb/vci/VH/VH-Syst_10ap30.php}.
+
+\bibitem[Res()]{ndwi_researchgate}
+\emph{NDWI: Normalized Difference Water Index Factsheet}.
+\newblock ResearchGate.
+\newblock URL
+  \url{https://www.researchgate.net/profile/Samuel-Akande-3/post/How_to_get_the_range_of_NDWI_from-1_to_1/attachment/5f17d8015e3fff0001795179/AS%3A915980364562432%401595398145806/download/factsheet_ndwi.pdf}.
+
+\bibitem[UN-()]{unspider_spi}
+\emph{Step by Step: Standardized Precipitation Index (SPI) in Google Earth
+  Engine}.
+\newblock UN-SPIDER.
+\newblock URL
+  \url{https://www.un-spider.org/advisory-support/recommended-practices/recommended-practice-drought-monitoring-spi/step-by-step}.
+
+\end{thebibliography}

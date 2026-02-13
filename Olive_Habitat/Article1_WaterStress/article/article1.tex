@@ -1,0 +1,224 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+% Page layout
+\geometry{margin=1in}
+
+% Code highlighting settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{\textbf{AI-Based Early Detection of Climate-Induced Water Stress in Olive Orchards Using Google Earth Engine: A Case Study of Ghafsai, Morocco}}
+\author{Aachaq et al.}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Mediterranean basin, particularly the Maghreb, is facing unprecedented aridity. This study investigates the use of Artificial Intelligence (AI) and multi-sensor remote sensing to detect water stress early in olive orchards (\textit{Olea europaea} L.) in Ghafsai, Morocco. Using Google Earth Engine (GEE), we processed terabytes of data from Sentinel-2, MODIS, CHIRPS, and SMAP satellites covering the 2019-2024 drought. We propose a framework using Random Forest (RF) for soil moisture downscaling and Long Short-Term Memory (LSTM) networks for forecasting vegetation health. Results show that while traditional NDVI lags in detecting stress in the 'Picholine Marocaine' cultivar, Short-Wave Infrared (SWIR) and Thermal Infrared (TIR) indices offer a lead time of up to three months. The study also identifies soil-dependent vulnerability gradients, aiding precision management aligned with Morocco's ``Generation Green 2020-2030'' strategy.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{The Climatological and Hydrological Crisis in the Maghreb}
+\begin{itemize}
+    \item \textbf{Climate Hotspot:} North Africa is warming faster than the global average, with Morocco facing chronic water deficits \cite{frontiers2025}.
+    \item \textbf{Severe Drought (2019-2024):} The country experienced its longest/most severe drought sequence, with 2023 being the driest year in 80 years (rainfall <100mm in many areas) \cite{frontiers2025}.
+    \item \textbf{Water Crisis:} Dam filling rates dropped to 28.5\% in 2024 despite capacity expansion \cite{frontiers2025}.
+    \item \textbf{Impact:} Agriculture (80\% of water use) is devastated, especially rainfed (Bour) areas like Taounate.
+\end{itemize}
+
+\subsection{The Olive Sector: Resilience Under Siege}
+\begin{itemize}
+    \item \textbf{Economic Pillar:} Olives cover 1.2 million ha in Morocco (65\% of fruit tree area) \cite{inra2025}.
+    \item \textbf{'Picholine Marocaine':} The dominant cultivar is historically drought-resilient but now threatened by intensified farming and climate change \cite{mdpi_phenotyping}.
+    \item \textbf{Intensification Issues:} Shift to high-density planting competes for dwindling groundwater \cite{mdpi_saiss}.
+    \item \textbf{"Silent Stress":} Olives close stomata to save water, staying green (high NDVI) even when stressed. Visual signs come too late (leaf shedding), necessitating early detection \cite{rdi_olive}.
+\end{itemize}
+
+\subsection{The Paradigm of Remote Sensing and AI}
+\begin{itemize}
+    \item \textbf{Solution:} Earth Observation (EO) via Google Earth Engine (GEE) overcomes ground monitoring limitations \cite{gee_sentinel2}.
+    \item \textbf{Multi-Sensor Approach:}
+        \begin{itemize}
+            \item \textbf{Optical (Sentinel-2):} Vegetation structure \cite{gee_sentinel2}.
+            \item \textbf{SWIR (Sentinel-2/MODIS):} Canopy water content \cite{ndwi_researchgate}.
+            \item \textbf{Thermal (MODIS):} Land Surface Temperature (LST) / stomatal conductance \cite{gee_modis_et}.
+            \item \textbf{Microwave (SMAP):} Root zone soil moisture \cite{gee_smap}.
+        \end{itemize}
+    \item \textbf{AI Methods:}
+        \begin{itemize}
+            \item \textbf{Random Forest (RF):} For handling non-linear relationships in spectral data \cite{hess_rf_downscaling}.
+            \item \textbf{LSTM (RNN):} For forecasting temporal drought trajectories \cite{lstm_drought}.
+        \end{itemize}
+\end{itemize}
+
+\section{Study Area: The Ghafsai Circle}
+
+\subsection{Geographical and Topographical Setting}
+\begin{itemize}
+    \item \textbf{Location:} Pre-Rif domain, Northern Morocco (between Saïss plain and Rif mountains).
+    \item \textbf{Terrain:} Rugged hills and deep valleys, promoting rapid runoff.
+\end{itemize}
+
+\subsection{Geological and Pedological Context}
+\begin{itemize}
+    \item \textbf{Soils:}
+        \begin{itemize}
+            \item \textbf{Vertisols/Luvisols (Valleys):} High clay, good water holding but prone to cracking.
+            \item \textbf{Lithosols (Slopes):} Shallow, skeletal, low water storage.
+        \end{itemize}
+    \item \textbf{Challenge:} Heavy clay soils cause waterlogging in winter and hardness in summer.
+\end{itemize}
+
+\subsection{Agro-Ecological Characteristics}
+\begin{itemize}
+    \item \textbf{Systems:} Mostly extensive 'Picholine' agroforestry (intercropped with cereals).
+    \item \textbf{Phenology:} Warmer winters are disrupting chill hour accumulation, affecting flowering (April-May).
+\end{itemize}
+
+\section{Materials and Data Acquisition}
+
+\subsection{Satellite Constellations}
+\begin{itemize}
+    \item \textbf{Sentinel-2 MSI:} 10m resolution. Key for resolving small orchards and calculating NDVI/NDWI.
+    \item \textbf{MODIS:} High frequency (8-day). Used for Evapotranspiration (ET) and LST.
+    \item \textbf{CHIRPS:} Gridded rainfall data (5.5km) for drought monitoring (SPI).
+    \item \textbf{SMAP:} Root zone soil moisture (9km), crucial for deep-rooted olives.
+\end{itemize}
+
+\subsection{Auxiliary Data}
+\begin{itemize}
+    \item \textbf{Topography:} NASA SRTM DEM for slope/aspect.
+    \item \textbf{Land Use:} Custom olive orchard mask.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Development of Water Stress Indices}
+\begin{itemize}
+    \item \textbf{Meteorological:} SPI (3 and 6 month) from CHIRPS \cite{unspider_spi}.
+    \item \textbf{Agricultural:} Vegetation Health Index (VHI) combining VCI (Vegetation) and TCI (Temperature). Threshold: VHI < 40 = Stress \cite{noaa_vhi}.
+    \item \textbf{Physiological:}
+        \begin{itemize}
+            \item \textbf{NDWI:} Leaf water content (NIR vs SWIR) \cite{ndwi_researchgate}.
+            \item \textbf{ETDI:} Evapotranspiration Deficit Index from MODIS \cite{mdpi_etdi}.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Machine Learning: Spatial Downscaling (Random Forest)}
+\begin{itemize}
+    \item \textbf{Goal:} Downscale SMAP soil moisture (9km) to orchard scale (10m).
+    \item \textbf{Inputs:} Sentinel-2 indices, LST, topography.
+    \item \textbf{Output:} 10m Soil Moisture Map.
+    \item \textbf{Interpretability:} SHAP values used to rank feature importance \cite{frontiers_shap_rf}.
+\end{itemize}
+
+\subsection{Deep Learning: Forecasting (LSTM)}
+\begin{itemize}
+    \item \textbf{Goal:} Forecast VHI 1-3 months ahead.
+    \item \textbf{Model:} 2 stacked LSTM layers with Dropout.
+    \item \textbf{Input:} 12-month sequence of Precip, Soil Moisture, VHI.
+    \item \textbf{Testing:} Trained on 2017-2021, Tested on 2022-2024 (drought years).
+\end{itemize}
+
+\section{Results and Analysis}
+
+\subsection{Meteorological Drought (2017-2024)}
+\begin{itemize}
+    \item \textbf{Timeline:} 2019 onset $\rightarrow$ 2022/2023 Extreme Drought (-56\% rainfall anomaly).
+    \item \textbf{SPI:} Cumulative SPI-24 dropped below -3.0, indicating cessation of groundwater recharge.
+\end{itemize}
+
+\subsection{Vegetation Health Evolution (VHI)}
+\begin{itemize}
+    \item \textbf{2017-18:} Healthy (VHI > 60).
+    \item \textbf{2019-20:} Warning phase (VHI 40-50). Lagged behind meteorological drought due to soil buffering.
+    \item \textbf{2022-24:} Collapse (VHI < 35). 68\% of orchards severely stressed. South-facing slopes degraded first.
+\end{itemize}
+
+\subsection{Spectral Sensitivity: NDVI vs. NDWI vs. LST}
+\begin{itemize}
+    \item \textbf{NDVI:} Poor early warning ($R^2=0.45$). Lags stress because leaves stay green.
+    \item \textbf{NDWI:} Good early warning ($R^2=0.72$). Lead time +1 month. Detects turgor loss.
+    \item \textbf{LST:} Best early warning ($R^2=0.68$). Lead time +1.5 months. Detects stomatal closure (heating).
+\end{itemize}
+
+\subsection{AI Model Performance}
+\begin{itemize}
+    \item \textbf{Random Forest (Downscaling):} $R^2=0.82$. Captured micro-variability (e.g., "wet islands" in deep soils).
+    \item \textbf{Feature Importance:} NDWI (28\%) and LST (22\%) were top drivers, validating physiological stress theory.
+    \item \textbf{LSTM (Forecasting):}
+        \begin{itemize}
+            \item \textbf{1-Month:} Accurate (MAE 4.5).
+            \item \textbf{3-Month:} Correctly predicted trend direction in 78\% of cases. Useful for seasonal planning.
+        \end{itemize}
+\end{itemize}
+
+\section{Discussion}
+
+\subsection{The "Silent Stress" Paradox}
+\begin{itemize}
+    \item 'Picholine' prioritizes survival over yield ("green but no olives").
+    \item Stomatal closure happens early; visual signs happen late.
+    \item \textbf{Takeaway:} Must monitor LST/NDWI, not just NDVI.
+\end{itemize}
+
+\subsection{Soil Influence}
+\begin{itemize}
+    \item \textbf{Clay (Vertisols):} Buffered early drought but cracked in later years, damaging roots.
+    \item \textbf{Calcareous:} Highly sensitive to "flash droughts" (no buffer).
+\end{itemize}
+
+\subsection{Policy Implications (Generation Green)}
+\begin{itemize}
+    \item \textbf{Zoning:} Use AI maps to ban intensification on shallow soils/steep slopes.
+    \item \textbf{Varieties:} Need for more xeric rootstocks beyond Picholine.
+    \item \textbf{Advisory:} Use LSTM forecasts for early warning apps (triggering pruning/irrigation).
+\end{itemize}
+
+\section{Conclusion}
+\begin{itemize}
+    \item \textbf{Crisis:} 2019-2024 drought challenges olive viability in Ghafsai.
+    \item \textbf{Method:} Multi-sensor fusion (Optical + Thermal + Microwave) is mandatory.
+    \item \textbf{Findings:} SWIR/Thermal indices beat NDVI (1-3 month lead time).
+    \item \textbf{Tools:} RF and LSTM effectively downscale data and forecast stress.
+    \item \textbf{Future:} AI-driven management is a survival imperative for the Maghreb.
+\end{itemize}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

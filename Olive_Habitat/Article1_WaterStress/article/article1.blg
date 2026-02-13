@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article1.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Warning--to sort, need author or key in inra2025
+Warning--to sort, need author or key in mdpi_phenotyping
+Warning--to sort, need author or key in mdpi_saiss
+Warning--to sort, need author or key in rdi_olive
+Warning--to sort, need author or key in hess_rf_downscaling
+Warning--to sort, need author or key in lstm_drought
+Warning--to sort, need author or key in mdpi_etdi
+Warning--to sort, need author or key in frontiers_shap_rf
+Warning--empty author in rdi_olive
+Warning--empty year in rdi_olive
+Warning--empty year in rdi_olive
+Warning--empty author in lstm_drought
+Warning--empty author in mdpi_etdi
+Warning--empty author in frontiers_shap_rf
+Warning--empty author in mdpi_phenotyping
+Warning--empty author in mdpi_saiss
+Warning--empty author in hess_rf_downscaling
+Warning--empty author in inra2025
+Warning--empty year in gee_modis_et
+Warning--empty year in gee_sentinel2
+Warning--empty year in gee_smap
+Warning--empty year in noaa_vhi
+Warning--empty year in ndwi_researchgate
+Warning--empty year in unspider_spi
+You've used 15 entries,
+            2773 wiz_defined-function locations,
+            664 strings with 7949 characters,
+and the built_in function-call counts, 4087 in all, are:
+= -- 430
+> -- 10
+< -- 1
++ -- 20
+- -- 3
+* -- 333
+:= -- 460
+add.period$ -- 46
+call.type$ -- 15
+change.case$ -- 46
+chr.to.int$ -- 13
+cite$ -- 62
+duplicate$ -- 277
+empty$ -- 491
+format.name$ -- 4
+if$ -- 935
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 9
+newline$ -- 84
+num.names$ -- 4
+pop$ -- 145
+preamble$ -- 1
+purify$ -- 37
+quote$ -- 0
+skip$ -- 159
+stack$ -- 0
+substring$ -- 83
+swap$ -- 24
+text.length$ -- 0
+text.prefix$ -- 6
+top$ -- 0
+type$ -- 165
+warning$ -- 24
+while$ -- 7
+width$ -- 0
+write$ -- 189
+(There were 24 warnings)

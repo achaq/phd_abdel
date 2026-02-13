@@ -1,0 +1,115 @@
+Advanced Computational Intelligence for Climate Resilience in Moroccan Agriculture and Hydro-Systems: A Strategic Research Roadmap (2026–2030)
+1. Executive Summary
+The Kingdom of Morocco currently stands at a decisive intersection of climatological vulnerability and technological opportunity. Recognized globally as a climate change "hotspot," the nation confronts a structural shift toward aridity, characterized by a warming trend exceeding the global average by approximately 11% and a hydrological deficit that threatens the foundational stability of its socio-economic systems. The agricultural sector, which employs nearly 40% of the national workforce and consumes over 80% of mobilized water resources, faces an existential challenge: decoupling productivity from an increasingly volatile meteorological baseline. Simultaneously, the scientific landscape is undergoing a "computational turn," driven by the maturation of Earth Observation (EO) constellations and the emergence of "Third Wave" Artificial Intelligence—specifically Physics-Informed Neural Networks (PINNs), Temporal Fusion Transformers (TFTs), and Graph Neural Networks (GNNs).
+This report presents an exhaustive, expert-level strategic roadmap designed to guide doctoral research within Moroccan institutions over the immediate 3-4 month horizon, culminating in high-impact peer-reviewed publications. The analysis synthesizes findings from over a decade of research (2015–2025) and integrates cutting-edge methodologies to address the specific "Data Scarcity Paradox" prevalent in North Africa—where process complexity is high but ground-truth observation is low. By leveraging the massive data archives of the Copernicus and Landsat programs via Google Earth Engine (GEE), this roadmap moves beyond the "legacy" tier of research, which relied heavily on generic statistical modeling (Random Forest, SVM), to propose "frontier" methodologies that are context-aware, physically consistent, and operationally deployable.
+The proposed research agenda is structured around two primary, high-potential pillars: Hydro-Informatics and Aquifer Security and Synthetic Intelligence for High-Value Orchard Monitoring (Olive/Almond). Each pillar is dissected to reveal the theoretical underpinnings, the specific technological gaps in the current Moroccan literature, and the precise execution pathway for a PhD candidate. This document argues that the integration of Deep Learning with domain-specific physical knowledge offers the only viable pathway to creating the "Digital Twins" necessary for resilient national planning, ensuring that Morocco’s adaptation measures are grounded in rigorous, data-driven foresight.
+2. The Climatic Imperative and the Computational Turn
+2.1 The Structural Drying of the Maghreb
+Morocco’s geographical diversity—spanning the Mediterranean coast, the Rif and Atlas mountain ranges, and the Saharan fringe—creates a complex matrix of climate vulnerabilities that have intensified markedly over the last decade. The period from 2019 to 2024 represents the longest consecutive drought sequence in the country’s recorded history, with average rainfall deficits reaching 35%, and a staggering 48% deficit in 2023 alone. This is not merely a meteorological anomaly but a structural shift in the hydrological baseline of the Maghreb. The implications for the national economy are profound. Agriculture contributes approximately 14–20% to Morocco's Gross Domestic Product (GDP) and employs nearly 40% of the national workforce. Critically, 80% of the cultivated land is rain-fed, making the sector hypersensitive to precipitation variability. The failure of seasonal rains directly translates to volatility in national growth, rural employment, and food security. Furthermore, the country faces a dual threat profile: while the interior suffers from aridification, northern regions like Tetouan and Tangier remain susceptible to devastating flash floods caused by intense, short-duration storm events.
+The hydrological deficit is systemic. In key basins such as the Oum Er-Rbia and Tensift, the balance between renewable water resources and agricultural demand is precarious. The annual availability of renewable water resources per capita has plummeted from 2,560 cubic meters in 1960 to approximately 620 cubic meters in 2020, placing the country well below the water scarcity threshold. This scarcity is exacerbated by the over-extraction of groundwater, which serves as a strategic buffer during drought years. In the Souss-Massa region, piezometric records indicate water table declines of 20 to 65 meters over the past three decades, leading to irreversible saline intrusion in coastal zones.
+2.2 The Evolution of AI in Moroccan Environmental Science
+Historically, Moroccan climate research relied on conventional statistical methods—linear regressions, ARIMA time-series modeling, and basic geostatistics—to interpret environmental data. While robust for stable systems, these methods struggle to capture the complex, multi-scalar interactions inherent in climate change, such as the teleconnections between ocean surface temperatures and local drought patterns, or the non-linear proliferation of pests like the desert locust. Since 2015, a "computational turn" has occurred. The democratization of satellite remote sensing data (Sentinel, Landsat) combined with the accessibility of open-source machine learning libraries (TensorFlow, PyTorch, Scikit-learn) has enabled researchers to deploy sophisticated algorithms capable of learning from vast, unstructured datasets.
+The analysis of academic output from 2015 to 2025 highlights a clear trajectory in algorithmic sophistication. The early half of the decade (2015–2019) was dominated by traditional machine learning algorithms—specifically Random Forest (RF), Support Vector Machines (SVM), and Artificial Neural Networks (ANN)—applied primarily to regression tasks involving satellite imagery and meteorological data. These methods established crucial baselines for land cover mapping and yield forecasting. However, the period from 2020 to 2025 has witnessed a paradigm shift toward Deep Learning (DL). This era is defined by the sophisticated deployment of Convolutional Neural Networks (CNNs) for high-precision plant pathology, Long Short-Term Memory (LSTM) networks for hydrological time-series forecasting, and cutting-edge architectures like Vision Transformers (ViTs) and Physics-Informed Neural Networks (PINNs) to address the persistent challenge of data scarcity.
+Despite these advancements, the current landscape of AI research in Morocco remains fragmented. Most studies are siloed, addressing single variables (e.g., only temperature or only yield) in limited geographic areas without integrating the systemic interdependencies of the water-energy-food nexus. There is a critical lag in the adoption of "Third Wave" AI technologies that can explain why a prediction was made (Interpretability) or enforce physical laws to prevent impossible predictions (Physics-Informed AI). Addressing these gaps is the primary focus of this research roadmap.
+2.3 The Data Scarcity Paradox and the Google Earth Engine Solution
+A critical bottleneck identified in the review is the "Data Scarcity Paradox." While satellite data is abundant, high-quality, localized ground-truth data remains scarce, often locked within silos or lacking the granularity required for deep learning training. For instance, training a model to detect Argan trees requires precise GPS coordinates of individual trees, and predicting crop yields requires parcel-level historical records that are often aggregated at the provincial level. The "Open Data Inventory" scores for Morocco reflect this, showing strong openness scores (87/100) but lower coverage scores, particularly for high-resolution hydrological data.
+Google Earth Engine (GEE) serves as the primary technological bridge over this infrastructure gap. GEE allows Moroccan researchers to access petabytes of data from the Sentinel (European Space Agency) and Landsat (NASA) constellations without the need for massive local storage or processing power. By leveraging GEE for data preprocessing (cloud masking, spectral index calculation) and exporting analysis-ready datasets to Python environments (TensorFlow/PyTorch) for advanced modeling, researchers can bypass the limitations of local hardware and focus on algorithmic innovation. This platform enables the integration of diverse datasets—precipitation from CHIRPS, evapotranspiration from MODIS, and land cover from Sentinel-2—creating the multi-modal data streams necessary for modern AI models.
+3. Strategic Research Track 1: Physics-Informed Groundwater Modeling
+This track addresses the critical issue of aquifer depletion in Morocco using "Grey Box" AI, which combines data with physical laws. We propose two distinct project options depending on your data access.
+Option A: The "Inverse Solver" – Finding Hidden Aquifer Parameters with PINNs
+Best for: Theoretical contribution + High Impact.
+Context: In the Souss-Massa or Haouz plains, we generally know the equations governing water flow (Darcy's Law), but we lack detailed maps of Transmissivity ($T$) and Storage Coefficient ($S$). Traditional methods require expensive pumping tests. A Physics-Informed Neural Network (PINN) can "learn" these parameters just by looking at sparse historical piezometric data.1
+Objective: Develop a PINN to solve the inverse groundwater problem: estimating the spatial distribution of Transmissivity ($T$) in the Souss-Massa basin using sparse head observations.
+Methodology:
+The Physics: You will use the 2D Boussinesq equation as the "Physics Loss."
+
+$$S \frac{\partial h}{\partial t} = \nabla \cdot (T \nabla h) + R - P$$
+
+Unlike standard Deep Learning, you don't just minimize the error between prediction and data; you minimize the residual of this equation.
+The Network: Construct a Neural Network (using PyTorch or DeepXDE) that takes $(x, y, t)$ as input and outputs Head ($h$) and Transmissivity ($T$).
+Training:
+Loss 1 (Data): The model must match historical piezometric levels from ABH reports (digitized) or literature.3
+Loss 2 (Physics): The model must satisfy the Boussinesq equation at every point in the domain (even where you have no data). This acts as a powerful regularizer, preventing overfitting.5
+Validation: Compare the learned $T$ map with local transmissivity values found in hydrogeological studies of Souss-Massa.3
+Tools & Code:
+DeepXDE: A Python library specifically for PINNs.
+Unconflow-PINN: A specific GitHub repository solving unconfined aquifer flow using PINNs. You can adapt this code directly.2
+PINA (Physics-Informed Neural networks for Advanced modeling): Another robust library based on PyTorch.6
+Option B: The "Super-Resolution" – Downscaling GRACE Data
+Best for: Data Availability (Purely Remote Sensing) + GEE integration.
+Context: The GRACE satellite gives us "Total Water Storage" changes, but at a very coarse resolution (approx. 25km-100km). This is too blurry for local management. We can use AI to "sharpen" this image using high-resolution local drivers (Rainfall, NDVI, Evapotranspiration) available in GEE.7
+Objective: Create a 1km-resolution Groundwater Storage Anomaly (GWSA) map for the Tensift or Oum Er-Rbia basin by downscaling GRACE data using a Deep Learning model (U-Net or XGBoost).
+Methodology:
+Data Extraction (GEE):
+Target: GRACE-FO Mascon solutions (coarse resolution).9
+Predictors (High Res): ERA5-Land (Soil Moisture, Temp), CHIRPS (Precipitation), Sentinel-2 (NDVI), ALOS (DEM).10
+Model Training: Train a model to learn the relationship between the Predictors and GRACE data at the coarse scale.
+Inference (Downscaling): Feed the high-resolution predictors into the trained model to predict GWSA at 1km resolution.
+Correction: Subtract surface water components (GLDAS Noah model) to isolate Groundwater from Total Water.12
+Tools & Code:
+GRACE-SeDA: A self-supervised deep learning model for downscaling GRACE data.13
+GRACE-TWSA-downscaling-ml: A repository specifically for downscaling GRACE using Machine Learning.7
+4. Strategic Research Track 2: Synthetic Intelligence for High-Value Orchard Monitoring
+This track shifts focus to Olive and Almond trees—strategic, high-value crops for Morocco (Plan Maroc Vert/Generation Green). The core problem is Data Scarcity: training modern AI to count trees or detect stress requires thousands of labeled images, which don't exist for Moroccan varieties. We will use Synthetic Data to solve this.
+Option A: "Sim-to-Real" Transfer for Olive Tree Counting
+Best for: Computer Vision enthusiasts.
+Context: Counting olive trees in dense or super-high-density (SHD) groves is hard with standard satellite imagery. Deep Learning models (YOLOv8) need massive training data. Instead of hand-labeling 5,000 trees, we will generate them.
+Objective: Train a YOLOv8 model to detect Olive trees in the Haouz/Tadla plains using a synthetic dataset generated via Generative Adversarial Networks (GANs).
+Methodology:
+Synthetic Generation:
+Technique: Use a CycleGAN or Pix2Pix model.15
+Process: Create simple binary masks (white circles on black background) representing "perfect" tree layouts. Train the GAN to translate these masks into "realistic" satellite textures (using a small sample of real Sentinel-2/Google Earth images as the "style").16
+Result: You now have 10,000+ images of olive groves where you know exactly where every tree is (because you created the mask).
+Training: Train a YOLOv8 or Faster R-CNN detector on this synthetic data.17
+Domain Adaptation: "Fine-tune" the model on a small set (e.g., 50 images) of real Moroccan olive groves to adapt it to the specific soil colors of the region.
+Validation: Test on a different region (e.g., Meknes vs. Marrakech) to prove robustness.
+Tools & Code:
+VHRTrees: A benchmark dataset/code for tree detection that can be used as a starting point.17
+Pix2Pix-for-Semantic-Segmentation: GitHub code for image-to-image translation which is perfect for Mask->Satellite generation.15
+Option B: Zero-Shot Almond Orchard Segmentation using SAM (Segment Anything Model)
+Best for: Using the absolute latest (2024/2025) technology.
+Context: Meta's Segment Anything Model (SAM) is a foundation model that can "cut out" any object in an image. However, it hasn't been extensively tested on Moroccan Almond orchards, which have unique spacing and soil backgrounds.18
+Objective: Adapt the Segment Anything Model (SAM) for automated delineation of Almond tree canopies in the Souss-Massa region, comparing it against traditional U-Net.
+Methodology:
+Data: Download high-res Google Earth RGB imagery (via GEE or SAS.Planet) for Almond orchards in Souss.
+The Tool: Use LangSAM or GeoSAM (geospatial adapters for SAM). These allow you to prompt the model with a text description ("tree") or a grid of points.19
+Fine-Tuning (LoRA): SAM is huge. You will use "Low-Rank Adaptation" (LoRA) to fine-tune it on a tiny dataset of Almond trees without retraining the whole model. This makes it efficient and feasible on a student laptop (via Colab).20
+Application: Calculate canopy size for each tree to estimate water requirements (larger canopy = more water need) and compare with ETa (Evapotranspiration) maps from GEE.
+Tools & Code:
+segment-geospatial (samgeo): A Python package specifically for using SAM with geospatial data.19
+Satellite-Imagery-Segmentation-with-Fast-SAM: A repo dedicated to speeding up this process.18
+5. Implementation Roadmap (3-4 Months)
+Month 1: Data & "Hello World"
+Groundwater Track: Download GRACE data (GEE) and digitize 1-2 piezometric maps from the Souss-Massa literature. Clone the Unconflow-PINN repo and run it on their sample data to ensure it works.2
+Orchard Track: Select 2 test sites (e.g., an Almond orchard in Souss and an Olive grove in Haouz). Download Sentinel-2 and high-res RGB chips. Install segment-geospatial and try a zero-shot segmentation.19
+Month 2: Model Development
+Groundwater Track: Modify the PINN physics equation to match the unconfined aquifer properties of Souss-Massa (adjust $S$ and $K$ ranges). Train the model to minimize the residual of the equation.5
+Orchard Track: Generate your synthetic dataset (if using GANs) or fine-tune SAM using LoRA. Run the detection/segmentation on your full study area.
+Month 3: Validation & Analysis
+Groundwater Track: Compare your PINN-predicted transmissivity map with geological maps. Does it identify the high-permeability zones near the riverbed?
+Orchard Track: Count the trees/calculate canopy area. Correlate this with NDVI time-series from GEE to see if "bigger trees" showed "more stress" during the 2023 drought.
+Month 4: Writing
+Target: Draft a paper for Remote Sensing (MDPI) or Journal of Hydrology: Regional Studies.
+Angle: "Overcoming Data Scarcity in North African Hydro-Systems/Agriculture using Physics-Informed/Generative AI."
+I've added the sections on Groundwater (PINN/GRACE) and Synthetic Orchard Monitoring (Olive/Almond) as requested, replacing the general sections with specific, actionable project ideas including relevant GitHub repositories and data strategies. Let me know if you would like to zoom in on the specific Python libraries for any of these tracks.
+Works cited
+Physics-informed deep learning for groundwater contamination sources identification under sparse monitoring - ResearchGate, accessed January 11, 2026, https://www.researchgate.net/publication/398417675_Physics-informed_deep_learning_for_groundwater_contamination_sources_identification_under_sparse_monitoring
+godoyva/Unconflow-PINN: The unconfined aquifer transient flow problem is solved by using Physics-Informed Neural Networks (PINN). - GitHub, accessed January 11, 2026, https://github.com/godoyva/Unconflow-PINN
+Assessment of Geohydraulic Parameters in Coastal Aquifers Using Electrical Resistivity Tomography: A Case Study from the Chaouia Region, Western Morocco - MDPI, accessed January 11, 2026, https://www.mdpi.com/2673-4834/6/4/149
+Evaluation of GRACE and GRACE-FO derived-products for water storage assessment in Moroccan aquifers: analysis of drought and human-induced impacts: Geocarto International, accessed January 11, 2026, https://www.tandfonline.com/doi/abs/10.1080/10106049.2025.2521829
+Physics-informed neural networks in groundwater flow modeling: Advantages and future directions | Request PDF - ResearchGate, accessed January 11, 2026, https://www.researchgate.net/publication/379799657_Physics-informed_neural_networks_in_groundwater_flow_modeling_Advantages_and_future_directions
+mathLab/PINA: Physics-Informed Neural networks for Advanced modeling - GitHub, accessed January 11, 2026, https://github.com/mathLab/PINA
+Full article: Evaluation of GRACE and GRACE-FO derived-products for water storage assessment in Moroccan aquifers: analysis of drought and human-induced impacts, accessed January 11, 2026, https://www.tandfonline.com/doi/full/10.1080/10106049.2025.2521829?src=
+Constructing GRACE-Based 1 km Resolution Groundwater Storage Anomalies in Arid Regions Using an Improved Machine Learning Downscaling Method: A Case Study in Alxa League, China - MDPI, accessed January 11, 2026, https://www.mdpi.com/2072-4292/15/11/2913
+Datasets tagged water in Earth Engine - Google for Developers, accessed January 11, 2026, https://developers.google.com/earth-engine/datasets/tags/water
+Machine learning downscaling of GRACE/GRACE-FO data to capture spatial-temporal drought effects on groundwater storage at a local scale under data-scarcity - ResearchGate, accessed January 11, 2026, https://www.researchgate.net/publication/383671920_Machine_learning_downscaling_of_GRACEGRACE-FO_data_to_capture_spatial-temporal_drought_effects_on_groundwater_storage_at_a_local_scale_under_data-scarcity
+DSSG2023-Groundwater/notebooks-and-markdowns/04A-Reading & Processing GRACE and GLDAS.ipynb at main - GitHub, accessed January 11, 2026, https://github.com/uwescience/DSSG2023-Groundwater/blob/main/notebooks-and-markdowns/04A-Reading%20%26%20Processing%20GRACE%20and%20GLDAS.ipynb
+Deep-Learning-Based Probabilistic Forecasting of Groundwater Storage Dynamics in Sudan Using Multisource Remote Sensing and Geophysical Data - MDPI, accessed January 11, 2026, https://www.mdpi.com/2072-4292/17/18/3172
+GRACE-SeDA: Self-supervised data assimilation model for downscaling GRACE(-FO) measurements - GitHub, accessed January 11, 2026, https://github.com/FoDcn/GRACE-SeDA
+wondy30/GRACE-TWSA-downscaling-ml - GitHub, accessed January 11, 2026, https://github.com/wondy30/GRACE-TWSA-downscaling-ml
+A2Amir/Pix2Pix-for-Semantic-Segmentation-of-Satellite-Images - GitHub, accessed January 11, 2026, https://github.com/A2Amir/Pix2Pix-for-Semantic-Segmentation-of-Satellite-Images
+(PDF) Automated tree crown labeling with 3D radiative transfer modelling achieves human comparable performances for tree segmentation in semi-arid landscapes - ResearchGate, accessed January 11, 2026, https://www.researchgate.net/publication/385464813_Automated_tree_crown_labeling_with_3D_radiative_transfer_modelling_achieves_human_comparable_performances_for_tree_segmentation_in_semi-arid_landscapes
+RSandAI/VHRTrees: A benchmark dataset for deep learning-based tree detection - GitHub, accessed January 11, 2026, https://github.com/RSandAI/VHRTrees
+Kirouane-Ayoub/Satellite-Imagery-Segmentation-with-Fast-SAM - GitHub, accessed January 11, 2026, https://github.com/Kirouane-Ayoub/Satellite-Imagery-Segmentation-with-Fast-SAM
+segment-geospatial/docs/examples/arcgis.ipynb at main - GitHub, accessed January 11, 2026, https://github.com/opengeos/segment-geospatial/blob/main/docs/examples/arcgis.ipynb
+Awesome SAM2 (Segment Anything in Images and Videos) - GitHub, accessed January 11, 2026, https://github.com/GuoleiSun/Awesome-SAM2
