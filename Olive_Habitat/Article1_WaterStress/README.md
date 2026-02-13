@@ -83,9 +83,10 @@ Based on the state-of-the-art analysis, this project addresses **three critical 
 | **Phase 1** | 1-2 | Data Backend | Robust GEE Pipeline + Topographic Correction |
 | **Phase 2** | 3-4 | MVP App | Functional "Draw & Analyze" Dashboard |
 | **Phase 3** | 5-6 | Science & AI | LSTM Autoencoder + DTW Implementation |
-| **Phase 4** | 7-8 | Article Writing | Draft Paper Ready for Submission |
-| **Phase 5** | 9-10 | Advanced Features | Thermal/CWSI + Attention Map Visualization |
-| **Phase 6** | 11-12 | Validation | Scientific Validation & Polish |
+| **Phase 3.5** | 7-8 | Advanced AI | Transformer + Physics-Informed Loss |
+| **Phase 4** | 9-10 | Article Writing | Draft Paper Ready for Submission |
+| **Phase 5** | 11-12 | Advanced Features | Thermal/CWSI + Attention Map Visualization |
+| **Phase 6** | 13-14 | Validation | Scientific Validation & Polish |
 
 ---
 
@@ -267,7 +268,29 @@ Based on the state-of-the-art analysis, this project addresses **three critical 
 
 ---
 
-## 📝 Phase 4: Article Writing (Weeks 7-8)
+## 🚀 Phase 3.5: Advanced Research (Weeks 7-8)
+
+*Focus: Addressing "Real Gaps" with Cutting-Edge AI (SOTA Comparisons).*
+
+### Week 7: Transformer vs. LSTM
+- [ ] **Day 1-2: Transformer Autoencoder**
+    - Implement `src/transformer_model.py` (Attention-based Anomaly Detection).
+    - Why? Transformers handle long-term dependencies better than RNNs.
+- [ ] **Day 3-4: Comparative Training**
+    - Train both LSTM and Transformer on the same data.
+    - Compare Reconstruction Error and Training Stability.
+
+### Week 8: Physics-Informed Machine Learning (PIML)
+- [ ] **Day 1-2: Physics Loss Function**
+    - Modify `train_autoencoder.py` to include a "Water Balance Constraint".
+    - $Loss = MSE + \lambda \times |(P - ET) - \Delta SM|$.
+    - This bridges the gap between AI and Agronomy.
+- [ ] **Day 3: Final Model Selection**
+    - Choose the best performing model (LSTM, Transformer, or Physics-LSTM) for the article results.
+
+---
+
+## 📝 Phase 4: Article Writing (Weeks 9-10)
 
 *Content pivots to "Unsupervised Anomaly Detection" for data-scarce regions.*
 
@@ -317,3 +340,23 @@ Article1_WaterStress/
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+## 🚀 Quick Start (Backend + Frontend)
+
+**1. Start the API** (Terminal 1):
+```bash
+cd Article1_WaterStress
+uvicorn api.main:app --reload --port 8000
+```
+*Without GEE auth? Use mock data:* `OLIVEGUARD_USE_MOCK_ANALYZE=true uvicorn api.main:app --reload --port 8000`
+
+**2. Start the Frontend** (Terminal 2):
+```bash
+cd frontend
+npm run dev
+```
+*API URL:* Set `NEXT_PUBLIC_API_URL=http://localhost:8000` in `.env.local` if needed.
+
+**3. Test:** Open http://localhost:3000/analyze, draw a polygon, and run analysis.

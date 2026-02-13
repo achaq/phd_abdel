@@ -8,11 +8,7 @@ import { AnalysisChart } from "@/components/dashboard/AnalysisChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Button } from "@/components/ui/Button";
-import {
-  mockAnalyzeOrchard,
-  type AnalysisResult,
-  type Geometry,
-} from "@/lib/mock-api";
+import { analyzeOrchard, type AnalysisResult, type Geometry } from "@/lib/api";
 import { Droplet, AlertCircle, MapPin, ArrowLeft } from "lucide-react";
 
 export default function AnalyzePage() {
@@ -46,8 +42,7 @@ export default function AnalyzePage() {
         return;
       }
 
-      console.log("Calling mockAnalyzeOrchard...");
-      const result = await mockAnalyzeOrchard(geometry);
+      const result = await analyzeOrchard(geometry);
       console.log("Analysis result:", result);
       setAnalysisResult(result);
     } catch (err) {
